@@ -1,7 +1,7 @@
 # ClipStudioPaint-Direct
 Clip Studio Paint 바로가기를 시작 메뉴에 추가해줍니다.
 
-[다운로드](https://raw.githubusercontent.com/Pindang2/ClipStudioPaint-Direct/main/clipget.bat) <<다운로드 글자를 우클릭한 뒤, "링크 저장"을 눌러주세요.
+[다운로드](https://github.com/Pindang2/ClipStudioPaint-Direct/releases) << 릴리즈 페이지에서 "clipget.bat"을 클릭하여 받아주시면 됩니다.
 
 ![](https://i.imgur.com/RsLrvcQ.png)
 
