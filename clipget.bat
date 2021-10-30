@@ -1,8 +1,9 @@
 @echo off
+@chcp 65001
 :: init
 for /f "tokens=4-5 delims=. " %%i in ('ver') do set VERSION=%%i.%%j
 IF NOT %VERSION% == 10.0 (
-    echo ÀÌ ½ºÅ©¸³Æ®´Â À©µµ¿ì 10¿¡¼­¸¸ Áö¿øµË´Ï´Ù.
+    echo ì´ ìŠ¤í¬ë¦½íŠ¸ëŠ” ìœˆë„ìš° 10ì—ì„œë§Œ ì§€ì›ë©ë‹ˆë‹¤.
     pause
     exit
 )
@@ -13,7 +14,7 @@ echo.
 echo.
 echo.
 echo.
-echo.  Clip Studio Paint ¹Ù·Î °¡±â »ı¼º ½Ã½ºÅÛ
+echo.  Clip Studio Paint ë°”ë¡œ ê°€ê¸° ìƒì„± ì‹œìŠ¤í…œ
 echo.               %ESC%[107;36mby Pindang2%ESC%[0m
 echo.
 echo.
@@ -22,12 +23,12 @@ echo.
 echo ============================================
 
 :: BatchGotAdmin from https://superuser.com/questions/788924/is-it-possible-to-automatically-run-a-batch-file-as-administrator
-REM ÆÛ¹Ì¼Ç Ã¼Å©
+REM í¼ë¯¸ì…˜ ì²´í¬
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
 
-REM ¿¡·¯ ¸Ş½ÃÁö ºĞ¼®
+REM ì—ëŸ¬ ë©”ì‹œì§€ ë¶„ì„
 if '%errorlevel%' NEQ '0' (
-    echo %ESC%[107;91m!^>%ESC%[0m ÀÌ ÀÛ¾÷Àº °ü¸®ÀÚ ±ÇÇÑÀ» ÇÊ¿ä·Î ÇÕ´Ï´Ù. ±ÇÇÑÀ» ±â´Ù¸®´Â Áß..
+    echo %ESC%[107;91m!^>%ESC%[0m ì´ ì‘ì—…ì€ ê´€ë¦¬ì ê¶Œí•œì„ í•„ìš”ë¡œ í•©ë‹ˆë‹¤. ê¶Œí•œì„ ê¸°ë‹¤ë¦¬ëŠ” ì¤‘..
     goto UACPrompt
 ) else ( goto gotAdmin )
 
@@ -48,7 +49,7 @@ if '%errorlevel%' NEQ '0' (
 
 :: Got code from https://www.computerhope.com/forum/index.php?topic=80659.0 Start
 Set Shortcut=C:\ProgramData\Microsoft\Windows\Start Menu\Programs\CLIP STUDIO\CLIP STUDIO.lnk
-Echo %ESC%[107;36m#^>%ESC%[0m ºĞ¼® Áß: %shortcut%
+Echo %ESC%[107;36m#^>%ESC%[0m ë¶„ì„ ì¤‘: %shortcut%
 timeout 3 >NUL
 IF exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\CLIP STUDIO\CLIP STUDIO.lnk" ( 
     echo.
@@ -56,9 +57,9 @@ IF exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\CLIP STUDIO\CLIP 
     cls
     echo ============================================
     echo.
-    echo %ESC%[107;91m!^>%ESC%[0m Clip Studio¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù. ÇØ´ç ÇÁ·Î±×·¥À» ¼³Ä¡ÇÏ¼Ì´ÂÁö È®ÀÎÇØÁÖ¼¼¿ä.
-    echo %ESC%[107;91m!^>%ESC%[0m ¼³Ä¡ÇÏ¼Ì´Ù¸é, ÇÁ·Î±×·¥À» ¼³Ä¡ÇÒ ¶§ ½ÃÀÛ ¸Ş´º¿¡ Ãß°¡ÇÏÁö ¾ÊÀ¸¼Ì´ÂÁö È®ÀÎÇØÁÖ¼¼¿ä.
-    echo %ESC%[107;91m!^>%ESC%[0m ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù. °¨»çÇÕ´Ï´Ù.
+    echo %ESC%[107;91m!^>%ESC%[0m Clip Studioë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. í•´ë‹¹ í”„ë¡œê·¸ë¨ì„ ì„¤ì¹˜í•˜ì…¨ëŠ”ì§€ í™•ì¸í•´ì£¼ì„¸ìš”.
+    echo %ESC%[107;91m!^>%ESC%[0m ì„¤ì¹˜í•˜ì…¨ë‹¤ë©´, í”„ë¡œê·¸ë¨ì„ ì„¤ì¹˜í•  ë•Œ ì‹œì‘ ë©”ë‰´ì— ì¶”ê°€í•˜ì§€ ì•Šìœ¼ì…¨ëŠ”ì§€ í™•ì¸í•´ì£¼ì„¸ìš”.
+    echo %ESC%[107;91m!^>%ESC%[0m í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.
     echo.
     echo ============================================
     echo.
@@ -72,31 +73,31 @@ echo wscript.Echo Lnk.TargetPath>>DecodeShortCut.vbs
 set vbscript=cscript //nologo DecodeShortCut.vbs
 For /f "delims=" %%T in ( ' %vbscript% "%Shortcut%" ' ) do set target=%%T
 del DecodeShortCut.vbs
-Echo %ESC%[107;36m#^>%ESC%[0m%ESC%[92m Clip Studio °¨ÁöµÊ: "%target%"
+Echo %ESC%[107;36m#^>%ESC%[0m%ESC%[92m Clip Studio ê°ì§€ë¨: "%target%"
 timeout 3 >NUL
 :: End
 
 powershell -Command "\"%target%\".length" > targetlen
 set /p targetlen= < targetlen
 del targetlen
-echo %ESC%[107;36m#^>%ESC%[0m ÆÄÀÏ À§Ä¡¸¦ °è»êÇÏ´Â Áß..
+echo %ESC%[107;36m#^>%ESC%[0m íŒŒì¼ ìœ„ì¹˜ë¥¼ ê³„ì‚°í•˜ëŠ” ì¤‘..
 
 set forcutn=%targetlen%-26
 powershell -Command "\"%target%\".Substring(0, %forcutn%)" > targettolnk
 set /p targettolnk= < targettolnk
 del targettolnk
-echo %ESC%[107;36m#^>%ESC%[0m ¸ñÇ¥ ÆĞ½º: %targettolnk%\CLIP STUDIO PAINT\
+echo %ESC%[107;36m#^>%ESC%[0m ëª©í‘œ íŒ¨ìŠ¤: %targettolnk%\CLIP STUDIO PAINT\
 IF exist "%targettolnk%\CLIP STUDIO PAINT\CLIPStudioPaint.exe" ( 
-    Echo %ESC%[107;36m#^>%ESC%[0m Clip Studio Paint¸¦ Ã£¾Ò½À´Ï´Ù.
+    Echo %ESC%[107;36m#^>%ESC%[0m Clip Studio Paintë¥¼ ì°¾ì•˜ìŠµë‹ˆë‹¤.
     timeout 1 >NUL
 ) else (
     cls
     echo %ESC%[0m ============================================
     echo.
-    echo %ESC%[107;91m!^>%ESC%[0m Clip Studio´Â Ã£¾ÒÀ¸³ª Clip Studio Paint¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.
-    echo %ESC%[107;91m!^>%ESC%[0m ÇØ´ç ÇÁ·Î±×·¥À» ¼³Ä¡ÇÏÁö ¾ÊÀ¸¼Ì´Ù¸é, Clip Studio ÇÁ·Î±×·¥À» ÀÌ¿ëÇØ Paint¸¦ ¼³Ä¡ÇØÁÖ¼¼¿ä.
-    echo %ESC%[107;91m!^>%ESC%[0m ¼³Ä¡ÇÏ¼Ì´Ù¸é, ÇÁ·Î±×·¥À» ¼³Ä¡ÇÒ ¶§ Clip Studio¿Í ´Ù¸¥ °æ·Î·Î ¼³Ä¡ÇÏÁø ¾ÊÀ¸¼Ì´ÂÁö È®ÀÎÇØÁÖ¼¼¿ä.
-    echo %ESC%[107;91m!^>%ESC%[0m ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù. °¨»çÇÕ´Ï´Ù. %ESC%[0m
+    echo %ESC%[107;91m!^>%ESC%[0m Clip StudioëŠ” ì°¾ì•˜ìœ¼ë‚˜ Clip Studio Paintë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
+    echo %ESC%[107;91m!^>%ESC%[0m í•´ë‹¹ í”„ë¡œê·¸ë¨ì„ ì„¤ì¹˜í•˜ì§€ ì•Šìœ¼ì…¨ë‹¤ë©´, Clip Studio í”„ë¡œê·¸ë¨ì„ ì´ìš©í•´ Paintë¥¼ ì„¤ì¹˜í•´ì£¼ì„¸ìš”.
+    echo %ESC%[107;91m!^>%ESC%[0m ì„¤ì¹˜í•˜ì…¨ë‹¤ë©´, í”„ë¡œê·¸ë¨ì„ ì„¤ì¹˜í•  ë•Œ Clip Studioì™€ ë‹¤ë¥¸ ê²½ë¡œë¡œ ì„¤ì¹˜í•˜ì§„ ì•Šìœ¼ì…¨ëŠ”ì§€ í™•ì¸í•´ì£¼ì„¸ìš”.
+    echo %ESC%[107;91m!^>%ESC%[0m í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤. %ESC%[0m
     echo.
     echo ============================================
     echo.
@@ -104,28 +105,28 @@ IF exist "%targettolnk%\CLIP STUDIO PAINT\CLIPStudioPaint.exe" (
     exit
 )
 
-Echo %ESC%[107;36m#^>%ESC%[0m Clip Studio PaintÀÇ ¹Ù·Î°¡±â¸¦ ½ÃÀÛ ¸Ş´º¿¡ Ãß°¡ÇÏ´Â Áß..
+Echo %ESC%[107;36m#^>%ESC%[0m Clip Studio Paintì˜ ë°”ë¡œê°€ê¸°ë¥¼ ì‹œì‘ ë©”ë‰´ì— ì¶”ê°€í•˜ëŠ” ì¤‘..
 echo =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-echo %ESC%[107;36m#^>%ESC%[0m ½ºÅ©¸³Æ®¸¦ ¸¸µå´Â Áß..
+echo %ESC%[107;36m#^>%ESC%[0m ìŠ¤í¬ë¦½íŠ¸ë¥¼ ë§Œë“œëŠ” ì¤‘..
 echo Set oWS = WScript.CreateObject("WScript.Shell") > CreateShortcut.vbs
 echo sLinkFile = "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\CLIP STUDIO\CLIP STUDIO Paint.lnk" >> CreateShortcut.vbs
 echo Set oLink = oWS.CreateShortcut(sLinkFile) >> CreateShortcut.vbs
 echo oLink.TargetPath = "%targettolnk%\CLIP STUDIO PAINT\CLIPStudioPaint.exe" >> CreateShortcut.vbs
 echo oLink.Save >> CreateShortcut.vbs
-echo %ESC%[107;36m#^>%ESC%[0m ½ºÅ©¸³Æ® ½ÇÇà..%ESC%[96m 
+echo %ESC%[107;36m#^>%ESC%[0m ìŠ¤í¬ë¦½íŠ¸ ì‹¤í–‰..%ESC%[96m 
 echo.
 cscript CreateShortcut.vbs
 del CreateShortcut.vbs
 echo %ESC%[0m =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
 timeout 2 >NUL
-Echo %ESC%[107;36m#^>%ESC%[0m%ESC%[92m ¿Ï·á %ESC%[0m
+Echo %ESC%[107;36m#^>%ESC%[0m%ESC%[92m ì™„ë£Œ %ESC%[0m
 timeout 3 >NUL
 
 echo ============================================
 echo.
-echo %ESC%[107;36m#^>%ESC%[0m%ESC%[96m ¼³Á¤À» ¸¶ÃÆ½À´Ï´Ù. Clip Studio Paint ÇÁ·Î±×·¥À» ½ÃÀÛ ¸Ş´º¿¡¼­ Ã£°Å³ª °Ë»öÇÏ¿© ¹Ù·Î ½ÇÇàÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.%ESC%[0m
-echo %ESC%[107;36m#^>%ESC%[0m È¤½Ã ½ÃÀÛÇÁ·Î±×·¥¿¡ Clip Studio Paint°¡ ¾ø´Ù¸é, 
-echo %ESC%[107;36m#^>%ESC%[0m ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù. °¨»çÇÕ´Ï´Ù.
+echo %ESC%[107;36m#^>%ESC%[0m%ESC%[96m ì„¤ì •ì„ ë§ˆì³¤ìŠµë‹ˆë‹¤. Clip Studio Paint í”„ë¡œê·¸ë¨ì„ ì‹œì‘ ë©”ë‰´ì—ì„œ ì°¾ê±°ë‚˜ ê²€ìƒ‰í•˜ì—¬ ë°”ë¡œ ì‹¤í–‰í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.%ESC%[0m
+echo %ESC%[107;36m#^>%ESC%[0m í˜¹ì‹œ ì‹œì‘í”„ë¡œê·¸ë¨ì— Clip Studio Paintê°€ ì—†ë‹¤ë©´, 
+echo %ESC%[107;36m#^>%ESC%[0m í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.
 echo.
 echo ============================================
 echo.
